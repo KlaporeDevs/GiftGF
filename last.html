@@ -1,0 +1,625 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#fff1f6">
+    <meta name="description" content="A birthday collection of favorite photos, sweet memories, and wishes for Paje Angela.">
+    <title>Our Favorite Memories | Happy Birthday, Angela! 🎂</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Quicksand:wght@300;400;500;600&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            min-height: 100vh;
+            background: linear-gradient(135deg,
+                    #ffd1dc 0%,
+                    #e6e6fa 25%,
+                    #ffefd5 50%,
+                    #e6e6fa 75%,
+                    #ffd1dc 100%);
+            background-size: 400% 400%;
+            animation: gradientFlow 15s ease infinite;
+            font-family: 'Quicksand', sans-serif;
+            overflow-x: hidden;
+            color: #4a4a4a;
+        }
+
+        @keyframes gradientFlow {
+            0% {
+                background-position: 0% 50%;
+            }
+
+            50% {
+                background-position: 100% 50%;
+            }
+
+            100% {
+                background-position: 0% 50%;
+            }
+        }
+
+        /* Enhanced Sparkle Effect */
+        .magic-sparkles {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        .sparkle {
+            position: absolute;
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            background-color: white;
+            animation: twinkle var(--duration, 4s) ease-in-out infinite;
+            opacity: 0;
+        }
+
+        @keyframes twinkle {
+
+            0%,
+            100% {
+                opacity: 0;
+                transform: scale(0.5);
+            }
+
+            50% {
+                opacity: 0.8;
+                transform: scale(1);
+            }
+        }
+
+        /* Generate 50 sparkles with different positions and animations */
+        .magic-sparkles::before,
+        .magic-sparkles::after {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background-image: radial-gradient(circle, white 1px, transparent 1px);
+            background-size: 50px 50px;
+            animation: sparkleLayer 8s linear infinite;
+            opacity: 0.5;
+        }
+
+        .magic-sparkles::after {
+            animation-delay: -4s;
+            transform: rotate(45deg);
+        }
+
+        @keyframes sparkleLayer {
+            0% {
+                transform: translateY(0);
+            }
+
+            100% {
+                transform: translateY(-50px);
+            }
+        }
+
+        /* Floating Hearts */
+        .floating-hearts {
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 2;
+        }
+
+        .heart {
+            position: absolute;
+            font-size: 1.5rem;
+            color: rgba(255, 105, 180, 0.6);
+            animation: floatHeart var(--float-duration, 6s) ease-in-out infinite;
+            animation-delay: var(--delay, 0s);
+        }
+
+        @keyframes floatHeart {
+            0% {
+                transform: translate(0, 100vh) rotate(0deg);
+            }
+
+            100% {
+                transform: translate(var(--translate-x, 0), -100vh) rotate(360deg);
+            }
+        }
+
+        /* Welcome Section */
+        .welcome {
+            text-align: center;
+            padding: 4rem 2rem;
+            position: relative;
+            z-index: 3;
+        }
+
+        .welcome h1 {
+            font-family: 'Dancing Script', cursive;
+            font-size: 4rem;
+            color: #ff69b4;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+            animation: fadeInScale 2s ease;
+        }
+
+        .welcome p {
+            font-size: 1.2rem;
+            max-width: 600px;
+            margin: 1.5rem auto;
+            line-height: 1.6;
+            animation: fadeIn 2s ease 0.5s both;
+        }
+
+        /* Enhanced Memory Cards */
+        .memory-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            z-index: 3;
+            position: relative;
+        }
+
+        .memory-card {
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 20px;
+            padding: 1.5rem;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .memory-card:hover {
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+        }
+
+        .memory-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+            transform: translateX(-100%);
+            transition: 0.5s;
+        }
+
+        .memory-card:hover::before {
+            transform: translateX(100%);
+        }
+
+        .memory-img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            border-radius: 15px;
+            margin-bottom: 1rem;
+            transition: transform 0.5s ease;
+        }
+
+        .memory-img--portrait {
+            height: auto;
+            object-fit: contain;
+        }
+
+        .memory-card:hover .memory-img {
+            transform: scale(1.05);
+        }
+
+        .memory-card:hover .memory-img--portrait {
+            transform: none;
+        }
+
+        .memory-date {
+            font-family: 'Dancing Script', cursive;
+            color: #ff69b4;
+            font-size: 1.3rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .memory-caption {
+            font-size: 1rem;
+            line-height: 1.5;
+            color: #666;
+        }
+
+        /* Final Message Section */
+        .final-message {
+            text-align: center;
+            padding: 4rem 2rem;
+            background: rgba(255, 255, 255, 0.3);
+            backdrop-filter: blur(10px);
+            margin-top: 3rem;
+            position: relative;
+            z-index: 3;
+        }
+
+        .final-message h2 {
+            font-family: 'Dancing Script', cursive;
+            font-size: 3rem;
+            color: #ff69b4;
+            margin-bottom: 2rem;
+            animation: heartbeat 2s infinite;
+        }
+
+        @keyframes heartbeat {
+
+            0%,
+            100% {
+                transform: scale(1);
+            }
+
+            50% {
+                transform: scale(1.1);
+            }
+        }
+
+        .final-message p {
+            font-size: 1.2rem;
+            max-width: 800px;
+            margin: 0 auto 2rem;
+            line-height: 1.8;
+        }
+
+        .goodbye-btn {
+            display: inline-block;
+            padding: 1rem 2rem;
+            font-size: 1.2rem;
+            background: linear-gradient(45deg, #ff69b4, #da70d6);
+            color: white;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(255, 105, 180, 0.4);
+            animation: float 3s infinite ease-in-out;
+        }
+
+        .goodbye-btn:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(255, 105, 180, 0.6);
+        }
+
+        @keyframes float {
+
+            0%,
+            100% {
+                transform: translateY(0);
+            }
+
+            50% {
+                transform: translateY(-10px);
+            }
+        }
+
+        /* Animations */
+        @keyframes fadeInScale {
+            0% {
+                opacity: 0;
+                transform: scale(0.8);
+            }
+
+            100% {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        @keyframes fadeIn {
+            0% {
+                opacity: 0;
+            }
+
+            100% {
+                opacity: 1;
+            }
+        }
+
+        /* Generate Hearts */
+        .js-generate-hearts {
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 2;
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 12px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: rgba(255, 255, 255, 0.4);
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: linear-gradient(45deg, #ff69b4, #da70d6);
+            border-radius: 6px;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .welcome h1 {
+                font-size: 3rem;
+            }
+
+            .memory-container {
+                grid-template-columns: 1fr;
+            }
+
+            .final-message h2 {
+                font-size: 2.5rem;
+            }
+        }
+
+        :root {
+            --ink: #38243e;
+            --muted: #786b80;
+            --berry: #bd3d78;
+            --rose: #ef76a8;
+            --lilac: #a994e8;
+        }
+
+        body {
+            background:
+                radial-gradient(ellipse at 10% 6%, rgba(255, 198, 221, 0.78), transparent 32%),
+                radial-gradient(ellipse at 90% 30%, rgba(202, 190, 255, 0.62), transparent 34%),
+                linear-gradient(145deg, #fff6f7 0%, #f6efff 52%, #fff1e8 100%);
+            color: var(--ink);
+        }
+
+        .magic-sparkles {
+            opacity: 0.45;
+        }
+
+        .welcome {
+            padding: clamp(3.5rem, 9vw, 6rem) 1.5rem 2.25rem;
+        }
+
+        .welcome .eyebrow {
+            margin: 0 0 0.75rem;
+            color: var(--berry);
+            font-size: 0.76rem;
+            font-weight: 700;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+        }
+
+        .welcome h1 {
+            color: #6c315c;
+            font-size: clamp(2.8rem, 7vw, 5rem);
+            line-height: 1.1;
+            text-wrap: balance;
+        }
+
+        .welcome p {
+            max-width: 660px;
+            margin-top: 1.1rem;
+            color: var(--muted);
+            font-size: clamp(1rem, 2.5vw, 1.15rem);
+        }
+
+        .memory-container {
+            max-width: 1280px;
+            padding: 1.5rem clamp(1rem, 4vw, 2.5rem) 3.5rem;
+            grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr));
+            gap: 1.35rem;
+        }
+
+        .memory-card {
+            padding: 0.85rem 0.85rem 1.2rem;
+            border: 1px solid rgba(255, 255, 255, 0.92);
+            border-radius: 24px;
+            background: rgba(255, 255, 255, 0.78);
+            box-shadow: 0 14px 34px rgba(81, 53, 91, 0.1);
+            backdrop-filter: blur(12px);
+        }
+
+        .memory-card:hover {
+            box-shadow: 0 20px 42px rgba(126, 68, 120, 0.16);
+        }
+
+        .memory-card::before {
+            z-index: 0;
+            pointer-events: none;
+        }
+
+        .memory-img {
+            position: relative;
+            z-index: 1;
+            height: 240px;
+            border-radius: 17px;
+            object-position: center 35%;
+        }
+
+        .memory-img--portrait {
+            height: auto;
+            max-height: 440px;
+            object-fit: contain;
+            background: rgba(248, 239, 247, 0.75);
+        }
+
+        .memory-date,
+        .memory-caption {
+            position: relative;
+            z-index: 1;
+            padding-right: 0.45rem;
+            padding-left: 0.45rem;
+        }
+
+        .memory-img {
+            transition: transform 0.35s ease;
+        }
+
+        .memory-card:hover .memory-img:not(.memory-img--portrait) {
+            transform: scale(1.025);
+        }
+
+        .memory-date {
+            margin: 0.15rem 0 0.45rem;
+            color: var(--berry);
+            font-size: 1.45rem;
+        }
+
+        .memory-caption {
+            color: var(--muted);
+            line-height: 1.7;
+        }
+
+        .final-message {
+            margin: 1rem clamp(1rem, 4vw, 2.5rem) 3rem;
+            padding: clamp(2.5rem, 6vw, 4rem) 1.5rem;
+            border: 1px solid rgba(255, 255, 255, 0.9);
+            border-radius: 30px;
+            background: rgba(255, 255, 255, 0.68);
+            box-shadow: 0 18px 48px rgba(81, 53, 91, 0.1);
+        }
+
+        .final-message h2 {
+            color: #6c315c;
+            font-size: clamp(2.4rem, 6vw, 3.6rem);
+        }
+
+        .final-message p {
+            color: var(--muted);
+            font-size: clamp(1rem, 2.4vw, 1.12rem);
+        }
+
+        .goodbye-btn {
+            margin-top: 0.25rem;
+            background: linear-gradient(110deg, var(--berry), #e86ca2 55%, var(--lilac));
+            box-shadow: 0 12px 26px rgba(189, 61, 120, 0.24);
+            animation: none;
+        }
+
+        .goodbye-btn:hover {
+            box-shadow: 0 16px 34px rgba(189, 61, 120, 0.32);
+            transform: translateY(-2px);
+        }
+
+        .goodbye-btn:focus-visible {
+            outline: 3px solid #6c315c;
+            outline-offset: 4px;
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            *,
+            *::before,
+            *::after {
+                scroll-behavior: auto !important;
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="magic-sparkles"></div>
+    <div class="floating-hearts">
+        <!-- Hearts will be generated via CSS -->
+        <div class="heart" style="--float-duration: 6s; --delay: 0s; --translate-x: 20px;">💝</div>
+        <div class="heart" style="--float-duration: 8s; --delay: 1s; --translate-x: -30px;">💖</div>
+        <div class="heart" style="--float-duration: 7s; --delay: 2s; --translate-x: 40px;">💗</div>
+        <div class="heart" style="--float-duration: 9s; --delay: 3s; --translate-x: -20px;">💓</div>
+        <div class="heart" style="--float-duration: 5s; --delay: 4s; --translate-x: 30px;">💕</div>
+    </div>
+
+    <section class="welcome">
+        <p class="eyebrow">A birthday scrapbook, made with love</p>
+        <h1>My Favorite Moments with You 💕</h1>
+        <p>Every photo holds a little piece of us. I’m so grateful for the laughter, sweetness, and memories we share—and excited for all the moments still to come. ✨</p>
+    </section>
+
+    <div class="memory-container">
+        <div class="memory-card">
+            <img src="./b1.jpeg" alt="A playful selfie with a kiss" class="memory-img">
+            <div class="memory-date">Sending You a Kiss</div>
+            <div class="memory-caption">That little kiss always makes me smile. You have a way of making even an ordinary moment feel special. 😘❤️</div>
+        </div>
+        <div class="memory-card">
+            <img src="./b2.jpeg" alt="A portrait of us together" class="memory-img memory-img--portrait">
+            <div class="memory-date">My Favorite Place Is by Your Side</div>
+            <div class="memory-caption">Seeing us together in this photo makes me so happy. I hope we get to make many more beautiful memories side by side. 😊💕</div>
+        </div>
+        <div class="memory-card">
+            <img src="./b3.jpg" alt="A close-up selfie with a flower filter" class="memory-img">
+            <div class="memory-date">A Little Flower, A Lot of Charm</div>
+            <div class="memory-caption">That flower suits you perfectly—sweet, lovely, and impossible not to smile at. 🌸💖</div>
+        </div>
+        <div class="memory-card">
+            <img src="./b4.jpeg" alt="A smiling selfie with a flower" class="memory-img">
+            <div class="memory-date">Your Smile Makes My Day</div>
+            <div class="memory-caption">I love this soft, happy smile of yours. I hope life gives you a million reasons to wear it. 🌼</div>
+        </div>
+        <div class="memory-card">
+            <img src="./b5.jpg" alt="A collage of playful selfies" class="memory-img">
+            <div class="memory-date">Every Side of You</div>
+            <div class="memory-caption">Every little expression in this collage is so you—and I love every one of them. Never stop being your lovely, playful self. 💕</div>
+        </div>
+        <div class="memory-card">
+            <img src="./b6.jpeg" alt="A happy moment with a gift box" class="memory-img">
+            <div class="memory-date">A Gift for Someone Special</div>
+            <div class="memory-caption">Your happy face with your gift is a memory I’ll always treasure. You deserve to feel loved and celebrated—not just today, but every day. 🎁💖</div>
+        </div>
+        <div class="memory-card">
+            <img src="./b7.jpeg" alt="A close-up selfie in a striped school uniform" class="memory-img">
+            <div class="memory-date">That Sweet Little Smile</div>
+            <div class="memory-caption">Even in a simple selfie, your smile makes everything feel brighter. I hope I get to see it every day. 😊💕</div>
+        </div>
+        <div class="memory-card">
+            <img src="./b8.jpeg" alt="A formal portrait in a blue outfit" class="memory-img">
+            <div class="memory-date">So Beautiful, So You</div>
+            <div class="memory-caption">You look so lovely and confident in this portrait. I’m proud of the person you are and all that you’re working toward. 💙✨</div>
+        </div>
+        <div class="memory-card">
+            <img src="./b9.jpeg" alt="A playful selfie with a kissy face" class="memory-img">
+            <div class="memory-date">My Favorite Pout</div>
+            <div class="memory-caption">That cute little pout is impossible not to love. Sending you a kiss right back! 😘💖</div>
+        </div>
+        <div class="memory-card">
+            <img src="./b10.jpeg" alt="A playful selfie in a green school uniform" class="memory-img">
+            <div class="memory-date">A Little School-Day Selfie</div>
+            <div class="memory-caption">I love these little glimpses of your day. Wherever you are and whatever you’re doing, you’re always beautiful to me. 💚</div>
+        </div>
+        <div class="memory-card">
+            <img src="./b11.png" alt="A photo strip of sweet moments together" class="memory-img memory-img--portrait">
+            <div class="memory-date">Little Moments, Big Memories</div>
+            <div class="memory-caption">From our silly poses to that sweet kiss, every moment with you is one I’ll keep close to my heart. Here’s to many more together. 🥰💕</div>
+        </div>
+        <div class="memory-card">
+            <img src="./b12.jpg" alt="A romantic portrait of us sharing a hug" class="memory-img memory-img--portrait">
+            <div class="memory-date">A Moment I’d Love to Share</div>
+            <div class="memory-caption">This sweet imagined moment of us together reminds me how lucky I feel to have you. I hope we keep making memories that are just as warm and special. ❤️</div>
+        </div>
+
+    </div>
+
+    <section class="final-message">
+        <h2>Happy Birthday, My Love! 🎂</h2>
+        <p>Thank you for every smile, every sweet little moment, and every memory we’ve made together. I feel so lucky to have you in my life. 💫<br>
+            May this new year bring you happiness, success, and all the beautiful things your heart hopes for.<br>
+            Keep being the wonderful, caring, and beautiful person I adore. 🌸</p>
+        <p>You deserve to feel loved and celebrated every day. I love you so much, and I can’t wait to make many more memories by your side. ✨💕</p>
+        <a href="./index.html" class="goodbye-btn">Back to the Beginning 💝</a>
+    </section>
+</body>
+
+</html>
